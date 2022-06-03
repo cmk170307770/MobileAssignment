@@ -26,16 +26,16 @@
         android:id="@+id/loginTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username:"
+        android:text="Email:"
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/usernamePlainText"
+        android:id="@+id/emailPlainText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Username"
+        android:text="Email"
         android:textSize="20sp" />
 
     <Space

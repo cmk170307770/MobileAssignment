@@ -23,19 +23,19 @@
         android:minHeight="20sp" />
 
     <TextView
-        android:id="@+id/registerUsernameTextView"
+        android:id="@+id/registerEmailTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Username:"
+        android:text="Email:"
         android:textSize="30sp" />
 
     <EditText
-        android:id="@+id/registerUsernamePlainText"
+        android:id="@+id/registerEmailPlainText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Username"
+        android:text="Email"
         android:textSize="20sp" />
 
     <TextView
@@ -52,22 +52,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Password"
-        android:textSize="20sp" />
-
-    <TextView
-        android:id="@+id/registerNameTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name"
-        android:textSize="30sp" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonName3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name"
         android:textSize="20sp" />
 
     <LinearLayout
