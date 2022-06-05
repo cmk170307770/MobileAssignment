@@ -34,8 +34,9 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/mainLogoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onLogoutButtonClick"
         android:text="Logout" />
 </LinearLayout>

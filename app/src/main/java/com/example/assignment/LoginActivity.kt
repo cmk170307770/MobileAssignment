@@ -34,7 +34,6 @@ class LoginActivity : AppCompatActivity() {
                     val editor = sharedPerference.edit();
                     editor.putString("email", email);
                     editor.commit();
-                    println("testcmktest");
                     val intent = Intent(this, MainActivity:: class.java);
                     startActivity(intent);
                     finish()
@@ -45,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     fun onLoginRegisterButtonClick(view: View){
-        println("cmktest 2: test");
         var intent = Intent(this, RegisterActivity:: class.java);
         startActivity(intent);
         finish();

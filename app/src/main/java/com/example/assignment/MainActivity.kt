@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -32,7 +33,6 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPerference = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
         var email = sharedPerference.getString("email", "");
-        println("spemail: " + email);
         if(email == "" && firstTime){
             firstTime = false;
             var intent = Intent(this, LoginActivity:: class.java);
@@ -81,5 +81,13 @@ class MainActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    fun onLogoutButtonClick(view: View){
+        val sharedPerference = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
+        sharedPerference.edit().remove("email").commit();
+        val intent = Intent(this, LoginActivity:: class.java);
+        startActivity(intent);
+        finish();
     }
 }
