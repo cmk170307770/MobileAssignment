@@ -58,6 +58,12 @@
         android:inputType="textPersonName|textPassword"
         android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/loginBiometricTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="App can authenticate using biometrics." />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -88,6 +94,7 @@
             android:layout_weight="1"
             android:maxWidth="180dp"
             android:minWidth="180dp"
+            android:onClick="onBiometricLoginButtonClick"
             android:text="Biometric Login" />
 
     </LinearLayout>

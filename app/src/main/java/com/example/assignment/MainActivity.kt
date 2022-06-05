@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         var data = callHKOApi("rhrread");
-        println( "cmkTest: " + data)
 
         val sharedPerference = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
         var email = sharedPerference.getString("email", "");
