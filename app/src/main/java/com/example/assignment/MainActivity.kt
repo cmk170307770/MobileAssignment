@@ -1,6 +1,8 @@
 package com.example.assignment
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
@@ -8,6 +10,7 @@ import android.os.Bundle
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -17,6 +20,8 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var fusedLocationClient: FusedLocationProviderClient;
     private val client = OkHttpClient();
+    private var firstTime = true;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +30,16 @@ class MainActivity : AppCompatActivity() {
         var data = callHKOApi("rhrread");
         println( "cmkTest: " + data)
 
+        val sharedPerference = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
+        var email = sharedPerference.getString("email", "");
+        println("spemail: " + email);
+        if(email == "" && firstTime){
+            firstTime = false;
+            var intent = Intent(this, LoginActivity:: class.java);
+            startActivity(intent);
+            finish();
+        }
+        /*
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -48,6 +63,8 @@ class MainActivity : AppCompatActivity() {
             .addOnSuccessListener { location : Location? ->
                 println("cmklkw: " + location.toString());
             }
+
+         */
     }
 
     fun callHKOApi(dataType: String){
@@ -59,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         return client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {}
             override fun onResponse(call: Call, response: Response) {
-                var rainfallList = JSONArray(JSONObject(response.body()?.string())["rainfall"]);
+                //var rainfallList = JSONArray(JSONObject(response.body()?.string())["rainfall"]);
 
             }
 

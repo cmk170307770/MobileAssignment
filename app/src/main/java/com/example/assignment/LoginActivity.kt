@@ -1,5 +1,6 @@
 package com.example.assignment
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -26,18 +27,27 @@ class LoginActivity : AppCompatActivity() {
         passwordPlainText = this.findViewById(R.id.passwordPlainText);
         val email = this.emailPlainText?.text.toString();
         val password = this.passwordPlainText?.text.toString();
-
+        val sharedPerference = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener{
             task ->
                 if(task.isSuccessful){
+                    val editor = sharedPerference.edit();
+                    editor.putString("email", email);
+                    editor.commit();
+                    println("testcmktest");
                     val intent = Intent(this, MainActivity:: class.java);
                     startActivity(intent);
                     finish()
                 }
         }.addOnFailureListener{ exception ->
             Toast.makeText(applicationContext, exception.localizedMessage,Toast.LENGTH_LONG).show();
-
         }
+    }
 
+    fun onLoginRegisterButtonClick(view: View){
+        println("cmktest 2: test");
+        var intent = Intent(this, RegisterActivity:: class.java);
+        startActivity(intent);
+        finish();
     }
 }

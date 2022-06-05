@@ -6,7 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
 
@@ -14,11 +16,18 @@ class RegisterActivity : AppCompatActivity() {
     var registerEmailPlainText : EditText? = null;
     var registerPasswordPlainText : EditText? = null;
 
+    public override fun onStart(){
+        super.onStart();
+        val currentUser = auth.currentUser;
+        if(currentUser != null){
+            //reload();
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        println("testtest");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
         auth = FirebaseAuth.getInstance();
     }
 

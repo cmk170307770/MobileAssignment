@@ -34,8 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Email"
         android:inputType="textPersonName"
-        android:text="Email"
         android:textSize="20sp" />
 
     <Space
@@ -54,8 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Password"
+        android:hint="Password"
+        android:inputType="textPersonName|textPassword"
         android:textSize="20sp" />
 
     <LinearLayout
@@ -72,6 +72,7 @@
             android:layout_weight="1"
             android:maxWidth="180dp"
             android:minWidth="180dp"
+            android:onClick="onLoginButtonClick"
             android:text="Login" />
 
         <Space
@@ -98,13 +99,14 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/loginRegisterButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:width="200dp"
             android:maxWidth="200dp"
             android:minWidth="200dp"
-            android:text="Button" />
+            android:onClick="onLoginRegisterButtonClick"
+            android:text="Register" />
     </LinearLayout>
 
 </LinearLayout>
