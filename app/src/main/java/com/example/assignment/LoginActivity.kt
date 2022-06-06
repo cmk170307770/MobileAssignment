@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG
 import androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL
@@ -26,13 +27,18 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt;
     private lateinit var promptInfo: BiometricPrompt.PromptInfo;
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        val sharedPerference = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
+        var firebaseAuth = sharedPerference.getString("firebaseAuth", "");
+        var firebasePw = sharedPerference.getString("firebasePw", "");
         auth = FirebaseAuth.getInstance();
 
         executor = ContextCompat.getMainExecutor(this);
+
 
         biometricPrompt = BiometricPrompt(this, executor, object: BiometricPrompt.AuthenticationCallback(){
             override fun onAuthenticationError(errorCode: Int, errString: CharSequence ){
@@ -42,6 +48,16 @@ class LoginActivity : AppCompatActivity() {
 
             override fun onAuthenticationSucceeded(result: BiometricPrompt.AuthenticationResult){
                 super.onAuthenticationSucceeded(result);
+                auth.signInWithEmailAndPassword(firebaseAuth.toString(), firebasePw.toString()).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        val editor = sharedPerference.edit();
+                        editor.putString("email", firebaseAuth.toString());
+                        editor.commit();
+                        val mainIntent = Intent(applicationContext, MainActivity:: class.java);
+                        startActivity(mainIntent);
+                        finish()
+                    }
+                }
                 Toast.makeText(applicationContext, "Authentication succeeded!", Toast.LENGTH_SHORT).show();
             }
 
@@ -57,6 +73,12 @@ class LoginActivity : AppCompatActivity() {
             .setNegativeButtonText("Use account passord")
             .build();
 
+
+
+        if(firebaseAuth == ""){
+            val biometricLoginButton = findViewById<Button>(R.id.bioLoginButton);
+            biometricLoginButton.isEnabled = false;
+        }
         var biometricLoginButton = findViewById<Button>(R.id.bioLoginButton);
         biometricLoginButton.setOnClickListener{
             biometricPrompt.authenticate(promptInfo);
@@ -86,10 +108,31 @@ class LoginActivity : AppCompatActivity() {
                 if(task.isSuccessful){
                     val editor = sharedPerference.edit();
                     editor.putString("email", email);
-                    editor.commit();
-                    val intent = Intent(this, MainActivity:: class.java);
-                    startActivity(intent);
-                    finish()
+
+                    val builder = AlertDialog.Builder(this);
+                    builder.setMessage("Do you want to use biometric to login?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes"){ diolog, id ->
+                            editor.putString("firebaseAuth", email);
+                            editor.putString("firebasePw", password);
+                            editor.commit();
+                            diolog.dismiss();
+                            val intent = Intent(this, MainActivity:: class.java);
+                            startActivity(intent);
+                            finish()
+                        }
+                        .setNegativeButton("No"){ diolog, id ->
+                            editor.commit();
+                            diolog.dismiss();
+                            val intent = Intent(this, MainActivity:: class.java);
+                            startActivity(intent);
+                            finish()
+                        }
+                    val alert = builder.create();
+                    alert.show();
+
+
+
                 }
         }.addOnFailureListener{ exception ->
             Toast.makeText(applicationContext, exception.localizedMessage,Toast.LENGTH_LONG).show();
