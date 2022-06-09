@@ -11,130 +11,93 @@
         android:id="@+id/currentDataTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Current Data" />
+        android:text="Current Data"
+        android:textSize="50sp" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/locationTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Loaction:"
+        android:textSize="30sp" />
 
-        <TextView
-            android:id="@+id/locationTextView"
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:width="15dp"
-            android:maxWidth="15dp"
-            android:minWidth="15dp"
-            android:text="Location:" />
-
-        <TextView
-            android:id="@+id/currentLocationTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/currentLocationTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/weatherTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Weather" />
+        android:text="Weather:"
+        android:textSize="30sp" />
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/weatherStatusTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Status:"
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/weatherStatusTextView"
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Status:" />
-
-        <TextView
-            android:id="@+id/statusDataTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/statusDataTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/descriptionTextView"
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Description:" />
-
-        <TextView
-            android:id="@+id/descriptionDataTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/descriptionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Description:"
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/temperatureTextView"
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Temperature(Fahrenheit):" />
-
-        <TextView
-            android:id="@+id/temperatureDataTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/descriptionDataTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/windTextView"
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Wind(meter/sec):" />
-
-        <TextView
-            android:id="@+id/windDataTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/temperatureTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:text="Temperature(Fahrenheit):"
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/visibilityTextView"
-            android:layout_width="15dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Visibility(meter):" />
+    <TextView
+        android:id="@+id/temperatureDataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp" />
 
-        <TextView
-            android:id="@+id/visibilityDataTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/windTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wind(meter/sec):"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/windDataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/visibilityTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Visibility(meter):"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/visibilityDataTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp" />
 
     <Button
         android:id="@+id/mainLogoutButton"

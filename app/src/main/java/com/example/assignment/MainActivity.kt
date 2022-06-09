@@ -15,10 +15,8 @@ import com.google.android.gms.location.LocationServices
 import okhttp3.*
 import org.json.JSONArray
 import org.json.JSONObject
-import org.w3c.dom.Text
 import java.io.IOException
 import java.util.*
-import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
@@ -53,7 +51,15 @@ class MainActivity : AppCompatActivity() {
         visibilityDataTextView = findViewById<TextView>(R.id.visibilityDataTextView);
         if(email != "") {
             fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
-                getLocation(fusedLocationClient);
+
+            Timer().scheduleAtFixedRate(object : TimerTask() {
+                override fun run() {
+                    getLocation(fusedLocationClient);
+                    println("testlkw");
+                }
+            }, 0, 60*1000)
+
+
         }
     }
 
@@ -83,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                     location!!.longitude.toString()
                 );
             }
-        TimeUnit.SECONDS.sleep(10L);
+
 
     }
 
