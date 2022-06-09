@@ -100,6 +100,13 @@
         android:textSize="25sp" />
 
     <Button
+        android:id="@+id/mapButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToMap"
+        android:text="Map" />
+
+    <Button
         android:id="@+id/mainLogoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

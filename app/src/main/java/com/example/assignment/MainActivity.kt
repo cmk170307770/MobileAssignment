@@ -130,4 +130,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent);
         finish();
     }
+
+    fun goToMap(view: View){
+        var intent = Intent(this, MapActivity::class.java);
+        startActivity(intent);
+        finish();
+    }
 }
