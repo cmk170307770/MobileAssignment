@@ -80,15 +80,20 @@ class MainActivity : AppCompatActivity() {
                 ), 0
             )
             getLocation(fusedLocationClient);
+        }else{
+            fusedLocationClient.lastLocation
+                .addOnSuccessListener { location: Location? ->
+                    //Geocoder geocoder = new Geocoder(this, Locale.getDefault())
+                    if(location != null){
+                        callOpenweatherApi(
+                            location!!.latitude.toString(),
+                            location!!.longitude.toString()
+                        );
+                    }
+
+                }
         }
-        fusedLocationClient.lastLocation
-            .addOnSuccessListener { location: Location? ->
-                //Geocoder geocoder = new Geocoder(this, Locale.getDefault())
-                callOpenweatherApi(
-                    location!!.latitude.toString(),
-                    location!!.longitude.toString()
-                );
-            }
+
 
 
     }
