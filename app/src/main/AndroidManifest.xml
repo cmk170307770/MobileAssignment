@@ -18,6 +18,11 @@
         android:theme="@style/Theme.Assignment"
         tools:targetApi="31">
         <activity
+            android:name=".LogActivity"
+            android:exported="false"
+            android:label="@string/title_activity_log"
+            android:theme="@style/Theme.Assignment.NoActionBar" />
+        <activity
             android:name=".MapActivity"
             android:exported="false" />
         <activity
@@ -35,6 +40,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyD1rWcFGP7ldtE0cBKK9hrOZ52-wsXwlrk" />
