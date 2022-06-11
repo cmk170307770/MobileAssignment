@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var windDataTextView: TextView;
     lateinit var visibilityDataTextView: TextView;
 
+    /*
+    * init layout
+    * */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -63,6 +66,9 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * get Location in order to get current weather
+    * */
     fun getLocation(fusedLocationClient: FusedLocationProviderClient){
         if (ActivityCompat.checkSelfPermission(
                 this,
@@ -98,6 +104,9 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    /*
+    * call the openweather API by latitude and longitude
+    * */
     fun callOpenweatherApi(lat: String, lon: String) {
 
         val request = Request.Builder()
@@ -128,6 +137,9 @@ class MainActivity : AppCompatActivity() {
         });
     }
 
+    /*
+    * logout when button clicked
+    * */
     fun onLogoutButtonClick(view: View){
         val sharedPerference = getSharedPreferences("LOGIN_INFO", Context.MODE_PRIVATE);
         sharedPerference.edit().remove("email").commit();
@@ -136,12 +148,18 @@ class MainActivity : AppCompatActivity() {
         finish();
     }
 
+    /*
+    * go to Map View when button clicked
+    * */
     fun goToMap(view: View){
         var intent = Intent(this, MapActivity::class.java);
         startActivity(intent);
         finish();
     }
 
+    /*
+    * go to Result View when button clicked
+    * */
     fun goToResultPage(view: View){
         var intent = Intent(this, LogActivity::class.java);
         startActivity(intent);

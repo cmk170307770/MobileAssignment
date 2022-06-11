@@ -24,6 +24,9 @@ class LogActivity : AppCompatActivity() {
     lateinit var _adapter: TaskAdapter;
     var _taskList:MutableList<Task>? = null;
 
+    /*
+    * init layout
+    * */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log);
@@ -47,6 +50,9 @@ class LogActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * get the data from firebase
+    * */
     private fun loadTaskList(dataSnapshot: DataSnapshot){
         val tasks = dataSnapshot.children.iterator();
 
@@ -74,6 +80,9 @@ class LogActivity : AppCompatActivity() {
         _adapter.notifyDataSetChanged();
     }
 
+    /*
+    * add the data to firebase
+    * */
     fun addTask(view: View){
         val task = Task.create();
 

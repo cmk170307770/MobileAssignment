@@ -16,6 +16,9 @@ class RegisterActivity : AppCompatActivity() {
     var registerEmailPlainText : EditText? = null;
     var registerPasswordPlainText : EditText? = null;
 
+    /*
+    * Connect to firebase
+    * */
     public override fun onStart(){
         super.onStart();
         val currentUser = auth.currentUser;
@@ -24,12 +27,18 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * init layout
+    * */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         auth = FirebaseAuth.getInstance();
     }
 
+    /*
+    * Register when button clicked
+    * */
     fun onRegisterButtonClick(view: View){
         registerEmailPlainText = this.findViewById(R.id.registerEmailPlainText);
         registerPasswordPlainText = this.findViewById(R.id.registerPasswordPlainText);
@@ -48,6 +57,9 @@ class RegisterActivity : AppCompatActivity() {
         };
     }
 
+    /*
+    * Go to Login Page when button clicked
+    * */
     fun onLoginButtonClick(view: View){
         var intent = Intent(this, LoginActivity::class.java);
         startActivity(intent);

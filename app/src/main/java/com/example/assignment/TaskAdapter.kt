@@ -11,6 +11,9 @@ class TaskAdapter (context: Context, taskList: MutableList<Task>) : BaseAdapter(
     private val _inflater: LayoutInflater = LayoutInflater.from(context);
     private val _tastList = taskList;
 
+    /*
+    * Get the list view
+    * */
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
         val objectId: String = _tastList.get(position).objectId as String;
         val createDate: String = _tastList.get(position).createDate as String;
@@ -34,18 +37,30 @@ class TaskAdapter (context: Context, taskList: MutableList<Task>) : BaseAdapter(
         return view
     }
 
+    /*
+    * Get the list view count
+    * */
     override fun getCount(): Int {
         return _tastList.size;
     }
 
+    /*
+    * Get the item
+    * */
     override fun getItem(position: Int): Any {
         return _tastList.get(position);
     }
 
+    /*
+    * Get item id
+    * */
     override fun getItemId(position: Int): Long {
         return position.toLong();
     }
 
+    /*
+    * List Row Model
+    * */
     private class ListRowHolder(row: View?){
         val createDate: TextView = row!!.findViewById(R.id.createDate);
         val result: TextView = row!!.findViewById(R.id.resultTestView);

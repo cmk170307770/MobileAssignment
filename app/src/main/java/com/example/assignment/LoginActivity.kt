@@ -27,7 +27,9 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var biometricPrompt: BiometricPrompt;
     private lateinit var promptInfo: BiometricPrompt.PromptInfo;
 
-
+    /*
+    * init layout
+    * */
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
@@ -85,6 +87,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * check the biometric status (fingerprint)
+    * */
     override fun onResume(){
         super.onResume();
         val loginBiometricTextView = findViewById<TextView>(R.id.loginBiometricTextView);
@@ -97,6 +102,9 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    /*
+    * Login when button clicked
+    * */
     fun onLoginButtonClick(view: View){
         emailPlainText = this.findViewById(R.id.emailPlainText);
         passwordPlainText = this.findViewById(R.id.passwordPlainText);
@@ -130,15 +138,15 @@ class LoginActivity : AppCompatActivity() {
                         }
                     val alert = builder.create();
                     alert.show();
-
-
-
                 }
         }.addOnFailureListener{ exception ->
             Toast.makeText(applicationContext, exception.localizedMessage,Toast.LENGTH_LONG).show();
         }
     }
 
+    /*
+    * Go to Register View when button clicked
+    * */
     fun onLoginRegisterButtonClick(view: View){
         var intent = Intent(this, RegisterActivity:: class.java);
         startActivity(intent);
