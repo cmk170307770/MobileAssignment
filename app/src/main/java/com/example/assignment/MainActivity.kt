@@ -58,11 +58,8 @@ class MainActivity : AppCompatActivity() {
             Timer().scheduleAtFixedRate(object : TimerTask() {
                 override fun run() {
                     getLocation(fusedLocationClient);
-                    println("testlkw");
                 }
             }, 0, 60*1000)
-
-
         }
     }
 
