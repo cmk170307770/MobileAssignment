@@ -141,4 +141,10 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent);
         finish();
     }
+
+    fun goToResultPage(view: View){
+        var intent = Intent(this, LogActivity::class.java);
+        startActivity(intent);
+        finish();
+    }
 }

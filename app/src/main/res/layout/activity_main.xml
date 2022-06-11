@@ -107,6 +107,13 @@
         android:text="Map" />
 
     <Button
+        android:id="@+id/resultPageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="goToResultPage"
+        android:text="Result Page" />
+
+    <Button
         android:id="@+id/mainLogoutButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
